@@ -32,7 +32,7 @@ function Character(name, hp, atk, defence, speed, counterRate) {
         console.log(`${this.name} đang tấn công ${target.name} với chỉ số tấn công là ${damage} và ${target.name} còn ${target.hp} máu.`);
 
         // Xử lý target phản công
-        if (target.isAlive() & Math.random() < target.counterRate) {
+        if (target.isAlive() && Math.random() < target.counterRate) {
                 const counterDamage = Math.max(target.atk - this.defence, 0);
 
                 // Trừ "HP" của "attacker"
@@ -106,10 +106,6 @@ function battle(char1, char2) {
         round++   
     }
 
-    // Người chiến thắng cuối cùng với Logic kiểm tra char1 trước nếu điều kiện phương thức char1.isAlive() là true thì return char 1 và ngược lại (dùng toán tử 3 ngôi)
-    const winner = char1.isAlive() ? char1 : char2;
-    console.log(`${winner.name} wins!`)
-
     // Tạo hàm để không bị lặp phương thức đánh nhau & linh hoạt hơn ở vòng lặp While 
     function battleRound (attacker, defencer) {
         // Attacker đánh trước
@@ -120,6 +116,10 @@ function battle(char1, char2) {
             defencer.attack(attacker);
         } 
     }
+
+    // Người chiến thắng cuối cùng với Logic kiểm tra char1 trước nếu điều kiện phương thức char1.isAlive() là true thì return char 1 và ngược lại (dùng toán tử 3 ngôi)
+    const winner = char1.isAlive() ? char1 : char2;
+    console.log(`${winner.name} wins!`)
 }
 
 
