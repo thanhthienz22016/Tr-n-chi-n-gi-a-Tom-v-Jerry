@@ -48,7 +48,7 @@ function Character(name, hp, atk, defence, speed, counterRate) {
  }
 
 //  Tạo ra nhân vật Tom & Jerry
- const tom = new Character('Tom', 1000, 120, 30, 10, 0.5);
+ const tom = new Character('Tom', 1000, 120, 30, 20, 0.5);
  const jerry = new Character('Jerry', 670, 90, 21, 20, 0.2);
 
 
@@ -96,10 +96,16 @@ function battle(char1, char2) {
         // In ra số round hiện tại
         console.log(`Round: ${round}`);
         
-        if (char1.speed >= char2.speed) {
+        if (char1.speed > char2.speed) {
             battleRound(char1, char2);
-        } else {
+        } else if (char2.speed > char1.speed){
             battleRound(char2, char1);
+        } else {
+            if (Math.random() < 0.5) {
+                battleRound(char1, char2);
+            } else {
+                battleRound(char2, char1);
+            }
         }
 
         // Tăng biến round lên mỗi lần lặp
