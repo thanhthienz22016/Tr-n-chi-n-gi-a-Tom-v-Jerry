@@ -96,7 +96,7 @@ function battle(char1, char2) {
         // In ra số round hiện tại
         console.log(`Round: ${round}`);
         
-        if (char1 >= char2) {
+        if (char1.speed >= char2.speed) {
             battleRound(char1, char2);
         } else {
             battleRound(char2, char1);
@@ -121,8 +121,6 @@ function battle(char1, char2) {
     const winner = char1.isAlive() ? char1 : char2;
     console.log(`${winner.name} wins!`)
 }
-
-
 
 //  Gọi hàm bắt đầu trận chiến
 battle(tom, jerry);
